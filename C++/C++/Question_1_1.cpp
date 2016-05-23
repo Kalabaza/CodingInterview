@@ -38,7 +38,6 @@ bool hasUniqueChars(const string &text)
 int main(int argc, char** argv)
 {
     string text{ "abcdefg" };
-    cout << text << endl;
-    cout << (hasUniqueChars(text) == true ? "No repeated chars" : "Repeated chars found") << endl;
+    cout << text << endl << (hasUniqueChars(text) == true ? "No repeated chars" : "Repeated chars found") << endl;
     return 0;
 }
