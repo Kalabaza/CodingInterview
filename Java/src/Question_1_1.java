@@ -1,3 +1,9 @@
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+//Question 1.1:
+//Implement an algorithm to determine if a string has all unique characters. What
+//if you cannot use additional data structures?
 
 public class Question_1_1 {
 
@@ -18,8 +24,21 @@ public class Question_1_1 {
 		return true;
 	}
 	
-	public static void main(String[] args) {
+	@Test
+	public void NonRepeatedChars() {
 		String text = "abcdefg";
-		System.out.println(text + "\n" + (hasUniqueChars(text) == true ? "No repeated chars" : "Repeated chars found"));
+		assertTrue(hasUniqueChars(text));
+	}
+	
+	@Test
+	public void RepeatedChars() {
+		String text = "abcdefgabcdefg";
+		assertFalse(hasUniqueChars(text));
+	}
+	
+	@Test
+	public void EmptyInputString() {
+		String text = "";
+		assertTrue(hasUniqueChars(text));
 	}
 }
