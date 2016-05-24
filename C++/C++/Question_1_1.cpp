@@ -1,13 +1,10 @@
-#include <iostream>
 #include <string>
-
-using namespace std;
 
 // Question 1.1:
 // Implement an algorithm to determine if a string has all unique characters. What
 // if you cannot use additional data structures?
 
-bool hasUniqueChars(const string &text)
+bool hasUniqueChars(const std::string &text)
 {
     // Considering that only ASCII characters are going to be received on the string
     // an array of 256 positions is enough to tell if there are any repeated
@@ -33,11 +30,4 @@ bool hasUniqueChars(const string &text)
 
     // If there was not a repeated character, return true.
     return true;
-}
-
-int main(int argc, char** argv)
-{
-    string text{ "abcdefg" };
-    cout << text << endl << (hasUniqueChars(text) == true ? "No repeated chars" : "Repeated chars found") << endl;
-    return 0;
 }
