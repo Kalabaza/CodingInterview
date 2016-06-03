@@ -1,55 +1,58 @@
+// Will be using Google test to ensure that the solutions are working correctly.
 #include <gtest/gtest.h>
-#include <string>
 
 // Question 1.1:
-// Implement an algorithm to determine if a string has all unique characters. What
-// if you cannot use additional data structures?
+// Implement an algorithm to determine if a string has all unique characters.
+// What if you cannot use additional data structures?
 
+// The solution will be assuming that the string will have only ASCII characters.
 bool hasUniqueChars(const std::string &text)
 {
-    // Considering that only ASCII characters are going to be received on the string
-    // an array of 256 positions is enough to tell if there are any repeated
-    // chars in the input string.
-    bool charArray[256] = {};
-
-    // If more than 256 are received on the input string it means that at least one
-    // character is repeated.
-    if (text.size() >= 256)
+    // If a string of more than 256 characters is received on the input it means that at least
+    // one character is repeated.
+    if (text.size() > 256)
         return false;
+
+    // Considering that only ASCII characters are going to be received on the string
+    // an array of 256 positions is enough to tell if there are any repeated chars 
+    // in the input string. An array of booleans will be used and it will be initialized
+    // to false.
+    bool charArray[256] = {};
 
     // Take each letter of the input text and mark the position on the array for that
     // specific letter, if the position was already marked it means that a duplicated
-    // character was found.
+    // character was found, access the chars by reference to avoid copying them.
     for (auto &c : text)
     {
-        // Return false to indicate that a character was repeated in the text.
+        // If the character was already marked return false to indicate a repeated character
+        // was found in the text.
         if (charArray[c] == true)
             return false;
-        // Mark the position on the array.
+        // Mark the position on the array for this specific character.
         charArray[c] = true;
     }
 
-    // If there was not a repeated character, return true.
+    // If there were not repeated characters, return true to indicate that there are no duplicates.
     return true;
 }
 
-// Test cases to ensure the solution to the question is correct
+// Test cases to ensure the solution to the question is correct, using Google test framework.
 
-// No characters are repeated
+// Test for non repeated characters.
 TEST(Question_1_1, NonRepeatedChars)
 {
     std::string text{ "abcdefg" };
-    ASSERT_EQ(true, hasUniqueChars(text));
+    ASSERT_TRUE(hasUniqueChars(text));
 }
 
-// Repeated characters
+// Test for repeated characters.
 TEST(Question_1_1, RepeatedChars)
 {
     std::string text{ "abcdefgabcdefg" };
-    ASSERT_EQ(false, hasUniqueChars(text));
+    ASSERT_FALSE(hasUniqueChars(text));
 }
 
-// Empty string test
+// Test for empty string.
 TEST(Question_1_1, EmptyInputString)
 {
     std::string text{};

@@ -1,0 +1,5 @@
+cmd: "go test -v"
+sh: true
+env:
+    GOROOT: "B:\\Go"
+    GOPATH: "B:\\Github\\CodingInterview\\Go"
