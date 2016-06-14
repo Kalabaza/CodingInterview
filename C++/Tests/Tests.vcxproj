@@ -152,6 +152,17 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Question_1_1.cpp" />
+    <ClCompile Include="Question_1_2.cpp" />
+    <ClCompile Include="Question_1_3.cpp" />
+    <ClCompile Include="Question_1_4.cpp" />
+    <ClCompile Include="Question_1_5.cpp" />
+    <ClCompile Include="Question_1_6.cpp" />
+    <ClCompile Include="Question_1_7.cpp" />
+    <ClCompile Include="Question_1_8.cpp" />
+    <ClCompile Include="Question_2_1.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Helpers.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

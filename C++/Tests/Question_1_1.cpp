@@ -6,7 +6,7 @@
 // What if you cannot use additional data structures?
 
 // The solution will be assuming that the string will have only ASCII characters.
-bool hasUniqueChars(const std::string &text)
+bool HasUniqueChars(const std::string &text)
 {
     // If a string of more than 256 characters is received on the input it means that at least
     // one character is repeated.
@@ -42,19 +42,19 @@ bool hasUniqueChars(const std::string &text)
 TEST(Question_1_1, NonRepeatedChars)
 {
     std::string text{ "abcdefg" };
-    ASSERT_TRUE(hasUniqueChars(text));
+    ASSERT_TRUE(HasUniqueChars(text));
 }
 
 // Test for repeated characters.
 TEST(Question_1_1, RepeatedChars)
 {
     std::string text{ "abcdefgabcdefg" };
-    ASSERT_FALSE(hasUniqueChars(text));
+    ASSERT_FALSE(HasUniqueChars(text));
 }
 
 // Test for empty string.
 TEST(Question_1_1, EmptyInputString)
 {
     std::string text{};
-    ASSERT_EQ(true, hasUniqueChars(text));
+    ASSERT_EQ(true, HasUniqueChars(text));
 }

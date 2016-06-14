@@ -8,7 +8,7 @@ import "testing"
 
 // Function to check if a string has repeated characters, will be assuming that the input
 // text is ASCII.
-func hasUniqueChars(text string) bool {
+func HasUniqueChars(text string) bool {
 	// Check if the text has more than 256 runes, meaning that at least one of them is
 	// repeated on the text.
 	if len([]rune(text)) > 256 {
@@ -38,23 +38,23 @@ func hasUniqueChars(text string) bool {
 func TestNonRepeatedChars(t *testing.T) {
 	var text string
 	text = "abcdefg"
-	if result := hasUniqueChars(text); result == false {
-		t.Fail()
+	if result := HasUniqueChars(text); result == false {
+		t.FailNow()
 	}
 }
 
 // Repeated characters in the text.
 func TestRepeatedChars(t *testing.T) {
 	var text = "abcdefgabcdefg"
-	if result := hasUniqueChars(text); result == true {
-		t.Fail()
+	if result := HasUniqueChars(text); result == true {
+		t.FailNow()
 	}
 }
 
 // Empty string test.
 func TestEmptyInputString(t *testing.T) {
 	text := ""
-	if result := hasUniqueChars(text); result == false {
-		t.Fail()
+	if result := HasUniqueChars(text); result == false {
+		t.FailNow()
 	}
 }
