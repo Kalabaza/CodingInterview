@@ -13,42 +13,69 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Arrays and Strings">
+      <UniqueIdentifier>{f3fddb80-c2bf-4700-9142-c8eff6187d1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Linked Lists">
+      <UniqueIdentifier>{d0cfb09d-6ae9-4e3d-a80d-569bf3c9406b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Question_1_1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Question_1_1.cpp">
+      <Filter>Source Files\Arrays and Strings</Filter>
+    </ClCompile>
     <ClCompile Include="Question_1_2.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Arrays and Strings</Filter>
     </ClCompile>
     <ClCompile Include="Question_1_3.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Arrays and Strings</Filter>
     </ClCompile>
     <ClCompile Include="Question_1_4.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Arrays and Strings</Filter>
     </ClCompile>
     <ClCompile Include="Question_1_5.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Arrays and Strings</Filter>
     </ClCompile>
     <ClCompile Include="Question_1_6.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Arrays and Strings</Filter>
     </ClCompile>
     <ClCompile Include="Question_1_7.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Arrays and Strings</Filter>
     </ClCompile>
     <ClCompile Include="Question_1_8.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Arrays and Strings</Filter>
     </ClCompile>
     <ClCompile Include="Question_2_1.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Linked Lists</Filter>
+    </ClCompile>
+    <ClCompile Include="Question_2_2.cpp">
+      <Filter>Source Files\Linked Lists</Filter>
+    </ClCompile>
+    <ClCompile Include="Question_2_3.cpp">
+      <Filter>Source Files\Linked Lists</Filter>
+    </ClCompile>
+    <ClCompile Include="Question_2_4.cpp">
+      <Filter>Source Files\Linked Lists</Filter>
+    </ClCompile>
+    <ClCompile Include="Question_2_5.cpp">
+      <Filter>Source Files\Linked Lists</Filter>
+    </ClCompile>
+    <ClCompile Include="Question_2_6.cpp">
+      <Filter>Source Files\Linked Lists</Filter>
+    </ClCompile>
+    <ClCompile Include="Question_2_7.cpp">
+      <Filter>Source Files\Linked Lists</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Helpers.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="LinkedList.h">
+      <Filter>Source Files\Linked Lists</Filter>
+    </ClInclude>
+    <ClInclude Include="StringHelpers.h">
+      <Filter>Source Files\Arrays and Strings</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
