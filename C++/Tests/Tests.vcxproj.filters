@@ -19,6 +19,9 @@
     <Filter Include="Source Files\Linked Lists">
       <UniqueIdentifier>{d0cfb09d-6ae9-4e3d-a80d-569bf3c9406b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Stacks and Queues">
+      <UniqueIdentifier>{c69fa8eb-43a2-4c68-8da7-4a9ca60ee61a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -69,6 +72,27 @@
     <ClCompile Include="Question_2_7.cpp">
       <Filter>Source Files\Linked Lists</Filter>
     </ClCompile>
+    <ClCompile Include="Question_3_1.cpp">
+      <Filter>Source Files\Stacks and Queues</Filter>
+    </ClCompile>
+    <ClCompile Include="Question_3_2.cpp">
+      <Filter>Source Files\Stacks and Queues</Filter>
+    </ClCompile>
+    <ClCompile Include="Question_3_3.cpp">
+      <Filter>Source Files\Stacks and Queues</Filter>
+    </ClCompile>
+    <ClCompile Include="Question_3_4.cpp">
+      <Filter>Source Files\Stacks and Queues</Filter>
+    </ClCompile>
+    <ClCompile Include="Question_3_5.cpp">
+      <Filter>Source Files\Stacks and Queues</Filter>
+    </ClCompile>
+    <ClCompile Include="Question_3_6.cpp">
+      <Filter>Source Files\Stacks and Queues</Filter>
+    </ClCompile>
+    <ClCompile Include="Question_3_7.cpp">
+      <Filter>Source Files\Stacks and Queues</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkedList.h">
@@ -76,6 +100,15 @@
     </ClInclude>
     <ClInclude Include="StringHelpers.h">
       <Filter>Source Files\Arrays and Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Source Files\Linked Lists</Filter>
+    </ClInclude>
+    <ClInclude Include="Stack.h">
+      <Filter>Source Files\Stacks and Queues</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue.h">
+      <Filter>Source Files\Stacks and Queues</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,23 +1,5 @@
 ﻿#include <vector>
-
-template <typename T>
-class Node
-{
-private:
-    T data;
-    Node *next;
-
-public:
-    Node(T data) : data{ data }, next{ nullptr } {}
-
-    // Modifiers for the next pointer
-    Node *Next() { return next; }
-    void Next(Node* next) { this->next = next; }
-
-    // Modifiers for the data element
-    T Data() { return data; }
-    void Data(const T &data) { this->data = data; }
-};
+#include "Node.h"
 
 template <typename T>
 class LinkedList
@@ -53,9 +35,7 @@ public:
     {
         // Check if the linked list is empty or not.
         if (root == nullptr)
-        {
             end = root = new Node<T>(data);
-        }
         else
         {
             // Add the new element to the beginning of the linked list.
@@ -68,9 +48,7 @@ public:
     void AddNodeAtEnd(const T &data)
     {
         if (end == nullptr)
-        {
             end = root = new Node<T>(data);
-        }
         else
         {
             // Add the new element to the end of the linked list.
@@ -92,6 +70,8 @@ public:
             auto tmp = root;
             root = root->next;
             delete tmp;
+            if (root == nullptr)
+                end = root;
             return true;
         }
         else

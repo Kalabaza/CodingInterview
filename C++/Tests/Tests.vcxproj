@@ -166,8 +166,18 @@
     <ClCompile Include="Question_2_5.cpp" />
     <ClCompile Include="Question_2_6.cpp" />
     <ClCompile Include="Question_2_7.cpp" />
+    <ClCompile Include="Question_3_1.cpp" />
+    <ClCompile Include="Question_3_2.cpp" />
+    <ClCompile Include="Question_3_3.cpp" />
+    <ClCompile Include="Question_3_4.cpp" />
+    <ClCompile Include="Question_3_5.cpp" />
+    <ClCompile Include="Question_3_6.cpp" />
+    <ClCompile Include="Question_3_7.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="Queue.h" />
+    <ClInclude Include="Stack.h" />
     <ClInclude Include="StringHelpers.h" />
     <ClInclude Include="LinkedList.h" />
   </ItemGroup>
