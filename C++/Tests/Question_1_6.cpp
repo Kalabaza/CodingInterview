@@ -1,24 +1,31 @@
 ﻿#include <gtest/gtest.h>
 
-// 1.6 Given an image represented by an NxN matrix, where each pixel in the image is 4
+//? Question 1.6:
+// Given an image represented by an NxN matrix, where each pixel in the image is 4
 // bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
 
-// The matrix used on the problem will be NxN (squared matrix).
-#define N 4
+// The matrix used on the problem will be NxN (squared matrix). Defining a N as 4.
+const int N = 4;
 
-// TODO: Understand a little bit more of this solution :(
+// Rotate the elements of the matrix in place using just an integer variable to hold a value.
 void RotateMatrix(int matrix[N][N])
 {
-    for (auto layer = 0; layer < N / 2; ++layer)
+    // The matrix will be divided into layers, starting from the outer most layer and going to the
+    // insight of the matrix until reaching the center. The number of layers is equal to N / 2.
+    for (int layer = 0; layer < N / 2; ++layer)
     {
-        auto first = layer;
-        auto last = N - 1 - layer;
-        for (auto i = first; i < last; ++i)
+        // The first position is equal to the layer value.
+        int first = layer;
+        // The last element is obtained with the total size N minus the layer that we are currently
+        // at, this will give back the correct last position to work with.
+        int last = N - 1 - layer;
+        for (int i = first; i < last; ++i)
         {
-            auto offset = i - first;
+            // The offset is the displacement inside a layer, from the first to the last element.
+            int offset = i - first;
 
             // Save the top value of the matrix, this will be assigned at the end.
-            auto top = matrix[first][i];
+            int top = matrix[first][i];
 
             // Move the left value to the top.
             matrix[first][i] = matrix[last - offset][first];
@@ -35,7 +42,7 @@ void RotateMatrix(int matrix[N][N])
     }
 }
 
-// Rotation of matrix
+//! Rotation of matrix by 90°
 TEST(Question_1_6, RotateMatrix90Degrees)
 {
     int matrix[N][N]{ {1, 2, 3, 4}, {5, 6, 7, 8}, { 9, 10, 11, 12 }, { 13, 14, 15, 16} };
@@ -46,7 +53,7 @@ TEST(Question_1_6, RotateMatrix90Degrees)
             ASSERT_EQ(matrix[i][j], expected[i][j]);
 }
 
-// Rotation of matrix
+//! Rotation of matrix by 360°
 TEST(Question_1_6, RotateMatrix360Degrees)
 {
     int matrix[N][N]{ { 1, 2, 3, 4 },{ 5, 6, 7, 8 },{ 9, 10, 11, 12 },{ 13, 14, 15, 16 } };

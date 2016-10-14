@@ -1,8 +1,11 @@
-﻿template <typename T>
+﻿// Template class to represent a Node that could be used either on a Linked list or a Queue.
+template <typename T>
 class Node
 {
 private:
+    // Element that will be saved in the Node.
     T data;
+    // Pointer to another element.
     Node *next;
 
 public:

@@ -1,4 +1,5 @@
-﻿// Method to swap two characters using the pointers to them.
+﻿
+// Method to swap two characters using the char pointers to them.
 inline void SwapChars(char *a, char *b)
 {
     auto c = *a;
@@ -6,11 +7,10 @@ inline void SwapChars(char *a, char *b)
     *b = c;
 }
 
-
-// Method to swap two characters to avoid using std::swap().
+// Method to swap two characters received by reference to avoid using std::swap().
 inline void SwapChars(char &a, char &b)
 {
-    auto c = a;
+    char c = a;
     a = b;
     b = c;
 }
