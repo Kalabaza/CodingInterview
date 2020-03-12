@@ -1,4 +1,4 @@
-﻿#include <string>
+#include <string>
 #include <gtest/gtest.h>
 #include "StringHelpers.h"
 
@@ -11,7 +11,7 @@ void ReverseCharArray(char *start)
     // If the pointer is not valid return.
     if (start == nullptr)
         return;
-    
+
     // First find the end of the string.
     auto *end = start;
     // Advance one location until the end of string character is found.
@@ -42,21 +42,19 @@ void ReverseString(std::string &text)
 //! Reverse a char array with even number of characters (4 in this case).
 TEST(Question_1_2, ReverseCharArrayEvenLength)
 {
-    char *text = new char[5]{ "abcd" };
-    ReverseCharArray(text);
+    char text[5]{ "abcd" };
+    ReverseCharArray(&text[0]);
     // Convert the char array into a string to be able to compare the result with the expected value.
-    ASSERT_EQ("dcba", std::string(text));
-    delete[] text;
+    ASSERT_EQ("dcba", std::string(&text[0]));
 }
 
 //! Reverse a char array with odd number of characters (5 in this case).
 TEST(Question_1_2, ReverseCharArrayOddLength)
 {
-    char *text = new char[6]{ "abcde" };
-    ReverseCharArray(text);
+    char text[6]{ "abcde" };
+    ReverseCharArray(&text[0]);
     // Convert the char array into a string to be able to compare the result with the expected value.
-    ASSERT_EQ("edcba", std::string(text));
-    delete[] text;
+    ASSERT_EQ("edcba", std::string(&text[0]));
 }
 
 //! Reverse a string with even number of characters (4 in this case).

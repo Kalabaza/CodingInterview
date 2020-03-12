@@ -1,4 +1,5 @@
-﻿#include <gtest/gtest.h>
+#include <cmath>
+#include <gtest/gtest.h>
 #include "LinkedList.h"
 
 // 2.5 You have two numbers represented by a linked list, where each node contains a
@@ -16,7 +17,7 @@ void SumLinkedLists(LinkedList<int> &A, LinkedList<T> &B, LinkedList<T> &C)
     auto exp = 0;
     while(tmp != nullptr)
     {
-        a += tmp->Data() * static_cast<int>(pow(10.0, exp++));
+        a += tmp->Data() * static_cast<int>(std::pow(10.0, exp++));
         tmp = tmp->Next();
     }
     // Now get the values from the second linked list.
@@ -24,7 +25,7 @@ void SumLinkedLists(LinkedList<int> &A, LinkedList<T> &B, LinkedList<T> &C)
     exp = 0;
     while (tmp != nullptr)
     {
-        b += tmp->Data() * static_cast<int>(pow(10.0, exp++));
+        b += tmp->Data() * static_cast<int>(std::pow(10.0, exp++));
         tmp = tmp->Next();
     }
     c = a + b;

@@ -11,9 +11,9 @@ private:
     Node<T> *end;
 
 public:
-    LinkedList() : root{ nullptr } {}
+    LinkedList() : root{ nullptr }, end{ nullptr } {}
 
-    ~LinkedList() 
+    ~LinkedList()
     {
         while (root != nullptr)
         {

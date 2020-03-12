@@ -10,3 +10,6 @@
 [Rr]elease/
 *.db
 *.opendb
+
+# CMake build folder
+build/

@@ -1,4 +1,5 @@
-﻿#include <string>
+#include <algorithm>
+#include <string>
 #include <gtest/gtest.h>
 
 //? Question 1.3:
@@ -12,8 +13,8 @@ bool IsPermutation(std::string str1, std::string str2)
         return false;
 
     // First sort the two strings (the sort will be done in place).
-    sort(str1.begin(), str1.end());
-    sort(str2.begin(), str2.end());
+    std::sort(str1.begin(), str1.end());
+    std::sort(str2.begin(), str2.end());
 
     // Now compare the two strings, if they are equal then the original strings are a permutation.
     return str1.compare(str2) == 0 ? true : false;

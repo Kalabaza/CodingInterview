@@ -1,4 +1,5 @@
-﻿#include <string>
+#include <algorithm>
+#include <string>
 #include <gtest/gtest.h>
 
 //? Question 1.4:
@@ -49,26 +50,23 @@ void ReplaceSpaces(char *text, int size)
 //! Replace only one space on the text.
 TEST(Question_1_4, ReplaceSpace)
 {
-    char *text = new char[14]{ "Sample text" };
-    ReplaceSpaces(text, strlen(text));
+    char text[14]{ "Sample text" };
+    ReplaceSpaces(&text[0], strlen(text));
     ASSERT_EQ("Sample%20text", std::string(text));
-    delete[] text;
 }
 
 //! Replace multiple spaces on the text.
 TEST(Question_1_4, ReplaceSpaces)
 {
-    char *text = new char[18]{ "a     b" };
-    ReplaceSpaces(text, strlen(text));
+    char text[18]{ "a     b" };
+    ReplaceSpaces(&text[0], strlen(text));
     ASSERT_EQ("a%20%20%20%20%20b", std::string(text));
-    delete[] text;
 }
 
 //! Text with no spaces (no replacement).
 TEST(Question_1_4, NoSpacesReplace)
 {
-    char *text = new char[18]{ "abcde" };
-    ReplaceSpaces(text, strlen(text));
+    char text[18]{ "abcde" };
+    ReplaceSpaces(&text[0], strlen(text));
     ASSERT_EQ("abcde", std::string(text));
-    delete[] text;
 }

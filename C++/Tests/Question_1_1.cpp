@@ -1,12 +1,17 @@
 #include <string>
-// Will be using Google test to ensure that the solutions are working correctly.
 #include <gtest/gtest.h>
 
-//? Question 1.1:
-// Implement an algorithm to determine if a string has all unique characters.
-// What if you cannot use additional data structures?
+/**
+ * Question 1.1:
+ * Implement an algorithm to determine if a string has all unique characters.
+ * What if you cannot use additional data structures?
+ */
 
-// The solution will assume that the string will have only ASCII characters.
+/**
+ * The solution will assume that the string will have only ASCII characters.
+ * @param  text The string text that will be checked.
+ * @return      True if all the characters are unique in the string, false otherwise.
+ */
 bool HasUniqueChars(const std::string &text)
 {
     // If a string of more than 256 characters is received on the input it means that at least
@@ -15,7 +20,7 @@ bool HasUniqueChars(const std::string &text)
         return false;
 
     // Considering that only ASCII characters are going to be received on the string
-    // an array of 256 positions is enough to tell if there are any repeated chars 
+    // an array of 256 positions is enough to tell if there are any repeated chars
     // in the input string. An array of booleans will be used and it will be initialized
     // to false in all the positions.
     bool charArray[256] = {};
@@ -27,10 +32,10 @@ bool HasUniqueChars(const std::string &text)
     {
         // If the character was already marked return false to indicate a repeated character
         // was found in the text.
-        if (charArray[c] == true)
+        if (charArray[static_cast<int>(c)] == true)
             return false;
         // Mark the position on the array for this specific character.
-        charArray[c] = true;
+        charArray[static_cast<int>(c)] = true;
     }
 
     // If there were not repeated characters, return true to indicate that there are no duplicates.
