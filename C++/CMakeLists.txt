@@ -30,4 +30,4 @@ package_add_test(Chapter_3 Tests/Question_3)
 ######################################
 # Run the tests after the compilation
 ######################################
-add_custom_target(tests ALL COMMAND ${CMAKE_CTEST_COMMAND} --progress)
+add_custom_target(tests ALL COMMAND ${CMAKE_CTEST_COMMAND} --progress --output-on-failure)

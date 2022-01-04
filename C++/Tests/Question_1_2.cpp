@@ -1,82 +1,53 @@
+#include <algorithm>
 #include <string>
 #include <gtest/gtest.h>
-#include "StringHelpers.h"
 
 //? Question 1.2:
-// Implement a function void reverse(char* str) in C or C++ which reverses a null-terminated string.
+// Given two strings, write a method to decide if one is a permutation of the other.
 
-// Reverse a c-style string.
-void ReverseCharArray(char *start)
+// The method will modify the local copy of the strings (parameters passed by value).
+bool IsPermutation(std::string str1, std::string str2)
 {
-    // If the pointer is not valid return.
-    if (start == nullptr)
-        return;
+    // If the size is not the same then it means that a permutation is not possible.
+    if (str1.size() != str2.size())
+        return false;
 
-    // First find the end of the string.
-    auto *end = start;
-    // Advance one location until the end of string character is found.
-    while (*end != '\0')
-        ++end;
-    // Get back one char since the last one was the end of string char.
-    --end;
-    // Swap the characters using the start and end pointers.
-    while (start < end)
-        SwapChars(start++, end--);
+    // First sort the two strings (the sort will be done in place).
+    std::sort(str1.begin(), str1.end());
+    std::sort(str2.begin(), str2.end());
+
+    // Now compare the two strings, if they are equal then the original strings are a permutation.
+    return str1.compare(str2) == 0 ? true : false;
 }
 
-// The function will be reversing the string in place, without having to return anything.
-void ReverseString(std::string &text)
+//! Valid string permutation.
+TEST(Question_1_2, StringPermutation)
 {
-    // Check if the string has more than one character or return otherwise.
-    if (text.empty() || text.length() == 1)
-        return;
-
-    for (size_t i = 0; i < text.length() / 2; ++i)
-    {
-        // Swap the ith character with the (last - ith) character, meaning that the first and last
-        // characters will be swap, then the second with the last minus one, etc.
-        SwapChars(text[i], text[text.length() - 1 - i]);
-    }
+    std::string str1{ "stressed" };
+    std::string str2{ "desserts" };
+    ASSERT_TRUE(IsPermutation(str1, str2));
 }
 
-//! Reverse a char array with even number of characters (4 in this case).
-TEST(Question_1_2, ReverseCharArrayEvenLength)
+//! Strings with different casing, (lower/upper case).
+TEST(Question_1_2, StringPermutationDifferentCasing)
 {
-    char text[5]{ "abcd" };
-    ReverseCharArray(&text[0]);
-    // Convert the char array into a string to be able to compare the result with the expected value.
-    ASSERT_EQ("dcba", std::string(&text[0]));
+    std::string str1{ "Stressed" };
+    std::string str2{ "Desserts" };
+    ASSERT_FALSE(IsPermutation(str1, str2));
 }
 
-//! Reverse a char array with odd number of characters (5 in this case).
-TEST(Question_1_2, ReverseCharArrayOddLength)
+//! Not a valid string permutation, different size.
+TEST(Question_1_2, StringPermutationDifferentSize)
 {
-    char text[6]{ "abcde" };
-    ReverseCharArray(&text[0]);
-    // Convert the char array into a string to be able to compare the result with the expected value.
-    ASSERT_EQ("edcba", std::string(&text[0]));
+    std::string str1{ "s" };
+    std::string str2{ "string" };
+    ASSERT_FALSE(IsPermutation(str1, str2));
 }
 
-//! Reverse a string with even number of characters (4 in this case).
-TEST(Question_1_2, ReverseStringEvenLength)
+//! Comparing two empty strings.
+TEST(Question_1_2, EmptyStringPermutation)
 {
-    std::string text{ "abcd" };
-    ReverseString(text);
-    ASSERT_EQ("dcba", text);
-}
-
-//! Reverse a string with odd number of characters (5 in this case).
-TEST(Question_1_2, ReverseStringOddLength)
-{
-    std::string text{ "abcde" };
-    ReverseString(text);
-    ASSERT_EQ("edcba", text);
-}
-
-//! Try to reverse an empty string.
-TEST(Question_1_2, ReverseEmptyString)
-{
-    std::string text{ "" };
-    ReverseString(text);
-    ASSERT_EQ("", text);
+    std::string str1{ "" };
+    std::string str2{ "" };
+    ASSERT_TRUE(IsPermutation(str1, str2));
 }

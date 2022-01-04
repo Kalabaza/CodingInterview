@@ -1,72 +1,70 @@
 #include <algorithm>
+#include <map>
 #include <string>
 #include <gtest/gtest.h>
 
 //? Question 1.4:
-// Write a method to replace all spaces in a string with '%20'. You may assume that the
-// string has sufficient space at the end of the string to hold the additional characters,
-// and that you are given the "true" length of the string. (Note: if implementing in Java,
-// please use a character array so that you can perform this operation in place.)
+// Given a string, write a function to check if it is a permutation of a palindrome.
+// A palindrome is a word or phrase that is the same forwards and backwards. A permutation
+// is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words.
 
-// The replacement of the characters will be done backwards since there is enough space in the
-// array to hold the data without using a new array.
-void ReplaceSpaces(char *text, int size)
+bool PalindromePermutation(std::string &text)
 {
-    // First count how many spaces are on the text.
-    int spaces = 0;
-    for (int i = 0; i < size; ++i)
-        if (text[i] == ' ')
-            ++spaces;
+    // change the characters to lower case
+    std::transform(text.begin(), text.end(), text.begin(), ::tolower);
 
-    // If there's at least one space do the replacement.
-    if (spaces != 0)
+    // remove any spaces from the text (is this allowed?)
+    text.erase(std::remove_if(text.begin(), text.end(), ::isspace), text.end());
+
+    std::cout << text << std::endl;
+
+    // add the characters to a map, to count the repetitions
+    std::map<char, int> rep;
+    for(auto &c: text) {
+        ++rep[c];
+    }
+
+    // now, if the number of characters is odd
+    if((rep.size()%2) == 1)
     {
-        // Calculate the total size of the string with the replaced characters.
-        int totalSize = size + spaces * 2;
-        // Put the new end of string character.
-        text[totalSize] = '\0';
-
-        for (int i = size - 1; i >= 0 && spaces != 0; --i)
+        // all the characters must have an even number of letters
+        for(auto &e: rep)
         {
-            // If a space is found on the text, change it for the characters %20.
-            if (text[i] == ' ')
+            if(e.second % 2 != 0)
+                return false;
+        }
+    }
+    // otherwise, if the number of characters is even
+    else
+    {
+        // only one character can have and odd number of letters
+        bool odd = false;
+        for(auto &e: rep)
+        {
+            if(e.second % 2 == 1)
             {
-                text[--totalSize] = '0';
-                text[--totalSize] = '2';
-                text[--totalSize] = '%';
-                // Just do the process as many times as characters there are in the text, when
-                // all the spaces are changed, the rest of the text will not be changed.
-                --spaces;
-            }
-            // Otherwise, just copy the character into the new location.
-            else
-            {
-                text[--totalSize] = text[i];
+                if(odd)
+                {
+                    return false;
+                }
+                odd = true;
             }
         }
     }
+
+    return true;
 }
 
-//! Replace only one space on the text.
-TEST(Question_1_4, ReplaceSpace)
+//! A valid palindrome permutation
+TEST(Question_1_4, ValidPalindromePermutation)
 {
-    char text[14]{ "Sample text" };
-    ReplaceSpaces(&text[0], strlen(text));
-    ASSERT_EQ("Sample%20text", std::string(text));
+    std::string text = "Tact Coa";
+    ASSERT_TRUE(PalindromePermutation(text));
 }
 
-//! Replace multiple spaces on the text.
-TEST(Question_1_4, ReplaceSpaces)
+//! Another valid palindrome permutation
+TEST(Question_1_4, ValidPalindromePermutation2)
 {
-    char text[18]{ "a     b" };
-    ReplaceSpaces(&text[0], strlen(text));
-    ASSERT_EQ("a%20%20%20%20%20b", std::string(text));
-}
-
-//! Text with no spaces (no replacement).
-TEST(Question_1_4, NoSpacesReplace)
-{
-    char text[18]{ "abcde" };
-    ReplaceSpaces(&text[0], strlen(text));
-    ASSERT_EQ("abcde", std::string(text));
+    std::string text = "Anita lava la tina";
+    ASSERT_TRUE(PalindromePermutation(text));
 }

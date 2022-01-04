@@ -8,7 +8,7 @@
  */
 
 /**
- * The solution will assume that the string will have only ASCII characters.
+ * The solution will assume that the string will have only ASCII characters (256 valid characters)
  * @param  text The string text that will be checked.
  * @return      True if all the characters are unique in the string, false otherwise.
  */
@@ -30,19 +30,14 @@ bool HasUniqueChars(const std::string &text)
     // character was found, access the chars by reference to avoid copying them.
     for (auto &c : text)
     {
-        // If the character was already marked return false to indicate a repeated character
-        // was found in the text.
         if (charArray[static_cast<int>(c)] == true)
             return false;
-        // Mark the position on the array for this specific character.
         charArray[static_cast<int>(c)] = true;
     }
 
     // If there were not repeated characters, return true to indicate that there are no duplicates.
     return true;
 }
-
-// Test cases to ensure the solution to the question is correct, using Google test framework.
 
 //! Test for non repeated characters.
 TEST(Question_1_1, NonRepeatedChars)
@@ -62,5 +57,15 @@ TEST(Question_1_1, RepeatedChars)
 TEST(Question_1_1, EmptyInputString)
 {
     std::string text{};
-    ASSERT_EQ(true, HasUniqueChars(text));
+    ASSERT_TRUE(HasUniqueChars(text));
+}
+
+//! Test for a really long text
+TEST(Question_1_1, LongInputString)
+{
+    std::string text{"abcdefghijklmnopqrstuvwxyz0123456789ß´ü+öä#,.-!§$%&()=?`*';:_{[]}~@€\
+abcdefghijklmnopqrstuvwxyz0123456789ß´ü+öä#,.-!§$%&()=?`*';:_{[]}~@€\
+abcdefghijklmnopqrstuvwxyz0123456789ß´ü+öä#,.-!§$%&()=?`*';:_{[]}~@€\
+abcdefghijklmnopqrstuvwxyz0123456789ß´ü+öä#,.-!§$%&()=?`*';:_{[]}~@€"};
+    ASSERT_FALSE(HasUniqueChars(text));
 }
