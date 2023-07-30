@@ -13,3 +13,6 @@
 
 # CMake build folder
 build/
+
+# Visual Studio user files
+*/.vs/
