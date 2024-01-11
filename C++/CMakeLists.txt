@@ -1,10 +1,12 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.22.1)
 project(CodingInterview CXX)
 
 ############################################################
 # Disable a warning related with DOWNLOAD_EXTRACT_TIMESTAMP
 ############################################################
-cmake_policy(SET CMP0135 NEW)
+if(POLICY CMP0135)
+  cmake_policy(SET CMP0135 NEW)
+endif()
 
 ########################################
 # Download GoogleTest from the internet
