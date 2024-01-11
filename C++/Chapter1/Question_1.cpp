@@ -15,7 +15,7 @@
  * @return      True if all the characters are unique in the string, false otherwise.
  */
 bool HasUniqueChars(const std::string &text) {
-    // If a string of more than 256 characters is received on the input it means that at least one character must be 
+    // If a string of more than 256 characters is received on the input it means that at least one character must be
     // repeated.
     if (text.size() > 256) {
         return false;
@@ -42,13 +42,13 @@ bool HasUniqueChars(const std::string &text) {
 
 //! Test for non repeated characters.
 TEST(Question_1_1, NonRepeatedChars) {
-    std::string text{ "abcdefg" };
+    std::string text{"abcdefg"};
     ASSERT_TRUE(HasUniqueChars(text));
 }
 
 //! Test for repeated characters.
 TEST(Question_1_1, RepeatedChars) {
-    std::string text{ "abcdefgabcdefg" };
+    std::string text{"abcdefgabcdefg"};
     ASSERT_FALSE(HasUniqueChars(text));
 }
 
@@ -60,7 +60,8 @@ TEST(Question_1_1, EmptyInputString) {
 
 //! Test for a really long text
 TEST(Question_1_1, LongInputString) {
-    std::string text{"abcdefghijklmnopqrstuvwxyz0123456789ß´ü+öä#,.-!§$%&()=?`*';:_{[]}~@€\
+    std::string text{
+        "abcdefghijklmnopqrstuvwxyz0123456789ß´ü+öä#,.-!§$%&()=?`*';:_{[]}~@€\
 abcdefghijklmnopqrstuvwxyz0123456789ß´ü+öä#,.-!§$%&()=?`*';:_{[]}~@€\
 abcdefghijklmnopqrstuvwxyz0123456789ß´ü+öä#,.-!§$%&()=?`*';:_{[]}~@€\
 abcdefghijklmnopqrstuvwxyz0123456789ß´ü+öä#,.-!§$%&()=?`*';:_{[]}~@€"};

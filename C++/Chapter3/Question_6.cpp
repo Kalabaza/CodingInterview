@@ -1,5 +1,7 @@
 ﻿#include <gtest/gtest.h>
+
 #include <tuple>
+
 #include "Queue.h"
 
 // 3.7 An animal shelter holds only dogs and cats, and operates on a strictly "first in,
@@ -10,73 +12,56 @@
 // and implement operations such as enqueue, dequeueAny, dequeueDog and
 // dequeueCat.You may use the built - in LinkedList data structure.
 
-template<typename T>
-class AnimalShelter
-{
-private:
+template <typename T>
+class AnimalShelter {
+   private:
     Queue<std::tuple<T, unsigned>> dogs, cats;
     unsigned order;
-public:
-    AnimalShelter() : order{ 0 } {}
 
-    void AddDog(const T &breed)
-    {
-        dogs.Push(std::make_tuple(breed, order++));
-    }
+   public:
+    AnimalShelter() : order{0} {}
 
-    void AddCat(const T &breed)
-    {
-        cats.Push(std::make_tuple(breed, order++));
-    }
+    void AddDog(const T &breed) { dogs.Push(std::make_tuple(breed, order++)); }
 
-    std::string SelectDog()
-    {
+    void AddCat(const T &breed) { cats.Push(std::make_tuple(breed, order++)); }
+
+    std::string SelectDog() {
         std::string breed;
-        if (!dogs.Empty())
-        {
+        if (!dogs.Empty()) {
             breed = std::get<0>(dogs.Front());
             dogs.Pop();
         }
         return breed;
     }
 
-    std::string SelectCat()
-    {
+    std::string SelectCat() {
         std::string breed;
-        if (!cats.Empty())
-        {
+        if (!cats.Empty()) {
             breed = std::get<0>(cats.Front());
             cats.Pop();
         }
         return breed;
     }
 
-    std::string SelectAny()
-    {
+    std::string SelectAny() {
         std::string breed;
         // If there are cats and dogs, take the oldest of them.
-        if (!dogs.Empty() && !cats.Empty())
-        {
-            if (std::get<1>(dogs.Front()) < std::get<1>(cats.Front()))
-            {
+        if (!dogs.Empty() && !cats.Empty()) {
+            if (std::get<1>(dogs.Front()) < std::get<1>(cats.Front())) {
                 breed = std::get<0>(dogs.Front());
                 dogs.Pop();
-            }
-            else
-            {
+            } else {
                 breed = std::get<0>(cats.Front());
                 cats.Pop();
             }
         }
         // If there are no dogs, take a cat.
-        else if (dogs.Empty())
-        {
+        else if (dogs.Empty()) {
             breed = std::get<0>(cats.Front());
             cats.Pop();
         }
         // If there are no cats, take a dog.
-        else
-        {
+        else {
             breed = std::get<0>(dogs.Front());
             dogs.Pop();
         }
@@ -84,8 +69,7 @@ public:
     }
 };
 
-TEST(Question_3_7, AnimalShelterWithQueues)
-{
+TEST(Question_3_7, AnimalShelterWithQueues) {
     AnimalShelter<std::string> shelter;
     shelter.AddDog("Bulldog");
     shelter.AddCat("Siamese");

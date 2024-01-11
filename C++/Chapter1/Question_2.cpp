@@ -25,7 +25,7 @@ bool IsPermutationOld(std::string str1, std::string str2) {
     std::sort(str2.begin(), str2.end());
 
     // Now compare the two strings, if they are equal then the original strings are a permutation.
-    return str1 == str2;;
+    return str1 == str2;
 }
 
 /**
@@ -40,28 +40,28 @@ bool IsPermutation(std::string str1, std::string str2) {
 
 //! Test for valid string permutation.
 TEST(Question_1_2, StringPermutation) {
-    std::string str1{ "stressed" };
-    std::string str2{ "desserts" };
+    std::string str1{"stressed"};
+    std::string str2{"desserts"};
     ASSERT_TRUE(IsPermutation(str1, str2));
 }
 
 //! Test strings with different case, lower/upper case.
 TEST(Question_1_2, StringPermutationDifferentCasing) {
-    std::string str1{ "Stressed" };
-    std::string str2{ "Desserts" };
+    std::string str1{"Stressed"};
+    std::string str2{"Desserts"};
     ASSERT_FALSE(IsPermutation(str1, str2));
 }
 
 //! Test for a not a valid string permutation, different size.
 TEST(Question_1_2, StringPermutationDifferentSize) {
-    std::string str1{ "s" };
-    std::string str2{ "string" };
+    std::string str1{"s"};
+    std::string str2{"string"};
     ASSERT_FALSE(IsPermutation(str1, str2));
 }
 
 //! Test to compare two empty strings.
 TEST(Question_1_2, EmptyStringPermutation) {
-    std::string str1{ "" };
-    std::string str2{ "" };
+    std::string str1{""};
+    std::string str2{""};
     ASSERT_TRUE(IsPermutation(str1, str2));
 }

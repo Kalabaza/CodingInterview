@@ -33,14 +33,15 @@ cmake_parse_arguments(
   ${ARGN}         # arguments of the function to parse
   )
   add_executable(${PARSED_ARGS_TESTNAME} ${PARSED_ARGS_SOURCES})
+  target_include_directories(${PARSED_ARGS_TESTNAME} PRIVATE Common)
   target_link_libraries(${PARSED_ARGS_TESTNAME} ${PARSED_ARGS_LIBS} gtest gtest_main)
   set_target_properties(${PARSED_ARGS_TESTNAME} PROPERTIES COMPILE_FLAGS "-Wall -Wextra -Wpedantic -Werror")
   add_test(NAME ${PARSED_ARGS_TESTNAME} COMMAND ${PARSED_ARGS_TESTNAME})
 endfunction()
 
-file(GLOB CHAPTER_1 "Tests/Question_1*")
-file(GLOB CHAPTER_2 "Tests/Question_2*")
-file(GLOB CHAPTER_3 "Tests/Question_3*")
+file(GLOB CHAPTER_1 "Chapter1/*.cpp")
+file(GLOB CHAPTER_2 "Chapter2/*.cpp")
+file(GLOB CHAPTER_3 "Chapter3/*.cpp")
 
 ########################
 # Unit tests by chapter

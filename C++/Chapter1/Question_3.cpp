@@ -18,7 +18,7 @@
  */
 void URLify(std::string &text, int size) {
     // First count the number of spaces in the text, using the true size of it.
-    auto spaces = std::count_if(text.begin(), text.begin() + size, [](char c){ return ' ' == c; });
+    auto spaces = std::count_if(text.begin(), text.begin() + size, [](char c) { return ' ' == c; });
 
     // If no spaces were found, just return.
     if (0 == spaces) {
@@ -26,9 +26,9 @@ void URLify(std::string &text, int size) {
     }
 
     // Do the replacement from the end of the string until there are no more spaces to replace.
-    for(size_t curPos = text.size() - 1; 0 != spaces; --size) {
+    for (size_t curPos = text.size() - 1; 0 != spaces; --size) {
         // If there is an space in the text, write the three replacement characters at the current position.
-        if(text[size - 1] == ' ') {
+        if (text[size - 1] == ' ') {
             text.replace(curPos - 2, 3, std::string("%20"));
             curPos -= 3;
             --spaces;
