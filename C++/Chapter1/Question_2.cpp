@@ -15,16 +15,16 @@
  * @return      True if one string is a permutation of the other.
  */
 bool IsPermutationOld(std::string str1, std::string str2) {
-    // If the size is not the same then it means that a permutation is not possible.
+    /// If the size is not the same then it means that a permutation is not possible.
     if (str1.size() != str2.size()) {
         return false;
     }
 
-    // First sort the two strings (the sort will be done in place).
+    /// First sort the two strings (sort done in place).
     std::sort(str1.begin(), str1.end());
     std::sort(str2.begin(), str2.end());
 
-    // Now compare the two strings, if they are equal then the original strings are a permutation.
+    /// Now compare the two strings, if they are equal then the original strings are a permutation.
     return str1 == str2;
 }
 
@@ -34,33 +34,33 @@ bool IsPermutationOld(std::string str1, std::string str2) {
  * @param  str2 The second string that will be compared.
  * @return      True if one string is a permutation of the other.
  */
-bool IsPermutation(std::string str1, std::string str2) {
+bool IsPermutation(const std::string &str1, const std::string &str2) {
     return std::is_permutation(str1.begin(), str1.end(), str2.begin(), str2.end());
 }
 
-//! Test for valid string permutation.
-TEST(Question_1_2, StringPermutation) {
+/// Test for valid string permutation.
+TEST(Question_2, StringPermutation) {
     std::string str1{"stressed"};
     std::string str2{"desserts"};
     ASSERT_TRUE(IsPermutation(str1, str2));
 }
 
-//! Test strings with different case, lower/upper case.
-TEST(Question_1_2, StringPermutationDifferentCasing) {
+/// Test strings with different case, lower/upper case.
+TEST(Question_2, StringPermutationDifferentCasing) {
     std::string str1{"Stressed"};
     std::string str2{"Desserts"};
     ASSERT_FALSE(IsPermutation(str1, str2));
 }
 
-//! Test for a not a valid string permutation, different size.
-TEST(Question_1_2, StringPermutationDifferentSize) {
+/// Test for a not a valid string permutation, different size.
+TEST(Question_2, StringPermutationDifferentSize) {
     std::string str1{"s"};
     std::string str2{"string"};
     ASSERT_FALSE(IsPermutation(str1, str2));
 }
 
-//! Test to compare two empty strings.
-TEST(Question_1_2, EmptyStringPermutation) {
+/// Test to compare two empty strings.
+TEST(Question_2, EmptyStringPermutation) {
     std::string str1{""};
     std::string str2{""};
     ASSERT_TRUE(IsPermutation(str1, str2));
